@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css" />
+    <script>
+        const ROOM_ID = "<%= roomId %>"
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" defer></script>
+    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js" defer></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="../script.js" defer></script>
+    <title>Document</title>
+    <style>
+        #video-grid {
+            display: grid;
+            border-style: solid;
+            border-color: coral;
+            grid-template-columns: repeat(auto-fill, 300px);
+            grid-auto-rows: 300px;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="glass">
+            <div class="dashboard">
+                <div class="title">
+                    <img src="../full_logo.png" alt="logo"></img>
+                    <hr>
+                    <div id="video-grid"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
