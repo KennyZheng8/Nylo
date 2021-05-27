@@ -19,11 +19,11 @@ app.get('/', (req, res) => {
   res.redirect(`/Nylo`)
 })
 
-app.get('/:Nylo', (req, res) => {
+app.get('/Nylo', (req, res) => {
   res.render('home')
 })
 
-app.get('/:Nylo/Room', (req, res) => {
+app.get('/Nylo/:Room', (req, res) => {
   res.render('room', {roomId: req.params.room})
 })
 

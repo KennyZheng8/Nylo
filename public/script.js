@@ -6,6 +6,12 @@ $("#roomId").on('change keydown paste input', function(){
   }
 });
 
+// $.get("roomNames.txt", function(data){
+//   const roomNames = data.split("\n");
+//   const roomName = roomNames[Math.floor(Math.random() * roomNames.length)];
+//   // alert(roomName);
+//   //joinRoom(roomName);
+// });
 
 const socket = io('/')
 const videoGrid = document.getElementById('video-grid')
@@ -66,10 +72,55 @@ function addVideoStream(video, stream) {
   videoGrid.append(video)
 }
 
-function openRoom(){
-    if ($("#roomId").val() == '') {
-        window.open("Nylo/room", "_self");
-    } else {
-        window.open("Nylo/room", "_self");
+function generateRoomName()
+{
+  var file = "roomNames.txt";
+  $.ajax({
+    url: file,
+    type: 'get',
+    dataType: 'text',
+    async: false,
+    success: function(data) {
+      roomNames = data.split("\n");
+      roomName = roomNames[Math.floor(Math.random() * roomNames.length)];
     }
+  });
+  return roomName;
 }
+
+function joinRoom() {
+  if ($("#roomId").val() == '') {
+    roomName = generateRoomName();
+    window.open("Nylo/room", "_self");
+  } else {
+    window.open("Nylo/room", "_self");
+  }
+}
+
+// function openRoom(roomName){
+//     if ($("#roomId").val() == '') {
+//       alert(roomName);      
+//       if (nameGenerated) {
+//         alert('true');
+//         window.open("Nylo/room", "_self");
+//       }
+//       else {
+//         alert('empty');
+//       }
+//     } else {
+//       const nameGenerated = generateRoomName();
+//       if (nameGenerated) {
+//         window.open("Nylo/room", "_self");
+//       }
+//     }
+// }
+
+// function generateRoomName(){
+//   const roomName = '';
+//   $.get("roomNames.txt", function(data){
+//     const roomNames = data.split("\n");
+//     const roomName = roomNames[Math.floor(Math.random() * roomNames.length)];
+//   });
+//   alert(roomName);
+//   return roomName;
+// }
