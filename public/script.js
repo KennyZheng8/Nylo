@@ -6,13 +6,6 @@ $("#roomId").on('change keydown paste input', function(){
   }
 });
 
-// $.get("roomNames.txt", function(data){
-//   const roomNames = data.split("\n");
-//   const roomName = roomNames[Math.floor(Math.random() * roomNames.length)];
-//   // alert(roomName);
-//   //joinRoom(roomName);
-// });
-
 const socket = io('/')
 const videoGrid = document.getElementById('video-grid')
 const myPeer = new Peer(undefined, {
@@ -72,8 +65,8 @@ function addVideoStream(video, stream) {
   videoGrid.append(video)
 }
 
-function generateRoomName()
-{
+// Generate random room name from roomNames.txt + 4 digits number
+function generateRoomName() {
   var file = "roomNames.txt";
   $.ajax({
     url: file,
@@ -83,36 +76,20 @@ function generateRoomName()
     success: function(data) {
       roomNames = data.split("\n");
       roomName = roomNames[Math.floor(Math.random() * roomNames.length)];
+      number = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
     }
   });
-  return roomName;
+  return roomName + number;
 }
 
-function joinRoom() {
-  if ($("#roomId").val() == '') {
-    roomName = generateRoomName();
-    window.open("Nylo/room", "_self");
-  } else {
-    window.open("Nylo/room", "_self");
-  }
-}
-
-// function openRoom(roomName){
-//     if ($("#roomId").val() == '') {
-//       alert(roomName);      
-//       if (nameGenerated) {
-//         alert('true');
-//         window.open("Nylo/room", "_self");
-//       }
-//       else {
-//         alert('empty');
-//       }
-//     } else {
-//       const nameGenerated = generateRoomName();
-//       if (nameGenerated) {
-//         window.open("Nylo/room", "_self");
-//       }
-//     }
+// function joinRoom() {
+//   if ($("#roomId").val() == '') {
+//     roomName = generateRoomName();
+//     //window.open("Nylo/room", "_self");
+//     window.open("Nylo/" + roomName, "_self");
+//   } else {
+//     window.open("Nylo/room", "_self");
+//   }
 // }
 
 // function generateRoomName(){

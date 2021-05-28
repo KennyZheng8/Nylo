@@ -23,7 +23,7 @@ app.get('/Nylo', (req, res) => {
   res.render('home')
 })
 
-app.get('/Nylo/:Room', (req, res) => {
+app.get('/Nylo/:room', (req, res) => {
   res.render('room', {roomId: req.params.room})
 })
 
@@ -39,3 +39,19 @@ io.on('connection', socket => {
 })
 
 server.listen(3000)
+
+function generateRoomName() {
+  var file = "roomNames.txt";
+  $.ajax({
+    url: file,
+    type: 'get',
+    dataType: 'text',
+    async: false,
+    success: function(data) {
+      roomNames = data.split("\n");
+      roomName = roomNames[Math.floor(Math.random() * roomNames.length)];
+      number = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
+    }
+  });
+  return roomName + number;
+}
