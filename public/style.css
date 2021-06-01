@@ -106,6 +106,28 @@ button:hover {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
+
+/* #profile_img {
+  border-radius: 50%;
+  width: 10%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  vertical-align: middle;
+} */
+
+#profile_img {
+  border-radius: 50%;
+  width: 25%;
+  margin-left: auto;
+  margin-right: 5px;
+}
+
+#userName {
+  text-align: left;
+  margin-left: 5px;
+}
+
 .circle1, .circle2 {
   background: white;
   background: linear-gradient(

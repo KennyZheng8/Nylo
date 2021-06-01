@@ -8,12 +8,15 @@ $("#roomId").on('change keydown paste input', function(){
 
 const socket = io('/')
 const videoGrid = document.getElementById('video-grid')
+const profileGrid = document.getElementById('profile-grid')
 const myPeer = new Peer(undefined, {
   host: '/',
   port: '3001'
 })
 
 const myVideo = document.createElement('video')
+const myProfile = document.createElement('profile')
+
 myVideo.muted = true
 const peers = {}
 
