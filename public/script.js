@@ -93,3 +93,19 @@ function generateRoomName() {
   });
   return roomName + number;
 }
+
+function generateUsername() {
+  var file ="names/userNames.txt";
+  $.ajax({
+    url: file,
+    type: 'get',
+    dataType: 'text',
+    async: false,
+    success: function(data) {
+      userNames = data.split("\n");
+      userName = userNames[Math.floor(Math.random() * usernames.length)];
+    }
+  });
+  return userName;
+}
+
