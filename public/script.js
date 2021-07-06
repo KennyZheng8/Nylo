@@ -68,6 +68,15 @@ function addVideoStream(video, stream) {
   videoGrid.append(video)
 }
 
+function joinRoom() {
+  if ($("#roomId").val() == '') {
+    roomName = generateRoomName();
+    window.open("Nylo/" + roomName, "_self");
+  } else {
+    window.open("Nylo/" + $("#roomId").val(), "_self");
+  }
+}
+
 // Generate random room name from roomNames.txt + 4 digits number
 function generateRoomName() {
   var file = "roomNames.txt";
@@ -84,23 +93,3 @@ function generateRoomName() {
   });
   return roomName + number;
 }
-
-// function joinRoom() {
-//   if ($("#roomId").val() == '') {
-//     roomName = generateRoomName();
-//     //window.open("Nylo/room", "_self");
-//     window.open("Nylo/" + roomName, "_self");
-//   } else {
-//     window.open("Nylo/room", "_self");
-//   }
-// }
-
-// function generateRoomName(){
-//   const roomName = '';
-//   $.get("roomNames.txt", function(data){
-//     const roomNames = data.split("\n");
-//     const roomName = roomNames[Math.floor(Math.random() * roomNames.length)];
-//   });
-//   alert(roomName);
-//   return roomName;
-// }
