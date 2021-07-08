@@ -79,7 +79,7 @@ function joinRoom() {
 
 // Generate random room name from roomNames.txt + 4 digits number
 function generateRoomName() {
-  var file = "roomNames.txt";
+  var file = "Data/roomNames.txt";
   $.ajax({
     url: file,
     type: 'get',
@@ -93,19 +93,3 @@ function generateRoomName() {
   });
   return roomName + number;
 }
-
-function generateUsername() {
-  var file ="names/userNames.txt";
-  $.ajax({
-    url: file,
-    type: 'get',
-    dataType: 'text',
-    async: false,
-    success: function(data) {
-      userNames = data.split("\n");
-      userName = userNames[Math.floor(Math.random() * usernames.length)];
-    }
-  });
-  return userName;
-}
-
